@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Technology learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <section id="section_editors">
+            <div id="html" class="code_box">
+                <h3>Type HTML Code here</h3>
+                <textarea id="HTMLInserted" onkeypress="showHTMLOutput()">
+                    <h1>I am an HTML tag</h1>
+                </textarea>
+            </div>
+            <div id="image" class="code_box">
+                <!-- <button>Click here to add an image.</button> -->
+                <img src="http://lh3.googleusercontent.com/UVqRPPKM15p5ZhePIaKh2E9OY42FqLyCVlcH2NpBZflxMUZ4Pj7Q8q9eu14YIblEHrgCJKlolnKgnw"
+                />
+                <!-- <button>Select image</button> -->
+                <h1>SELECT JQUERY EFFECT</h1>
+                <button id="jqueryEffect">Effect 1 </button>
+                <!-- <button>SUBMIT PHOTO WITH EFFECT BUTTON</button> -->
+            </div>
+        </section>
+
+        <section id="output">
+            <h3>Output</h3>
+            <iframe></iframe>
+        </section>
+
+    </div>
+
+    <script type="text/javascript">
+        //show HTML output block command
+        function showHTMLOutput() {
+            var elem = document.getElementById('HTMLInserted').value;
+            console.log("elem" + elem);
+            var elem2 = document.getElementById('output').innerHTML = elem;
+            console.log("elem2" + elem2);
+        }
+
+        //jquery animation
+        $(document).ready(function () {
+            $("#jqueryEffect").click(function () {
+                $("img").animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    height: '150px',
+                    width: '150px'
+                });
+            });
+        });    
+    </script>
+</body>
+
+</html>
