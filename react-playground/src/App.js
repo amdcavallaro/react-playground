@@ -32,10 +32,10 @@ class App extends Component {
     document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     $(document).ready(function () {
       $("#jqueryEffect").click(function () {
-        $("img").animate({
+        $("#screenshotTaken").animate({
           left: '250px',
           opacity: '0.5',
           height: '150px',
@@ -58,8 +58,10 @@ class App extends Component {
             </div>
             <div id="image" className="code_box">
               <div>
+                <h3>Click here to show webcam</h3>
                 <button onClick={this.handleWebCam}>Show webcam</button>
                 {this.state.on ?
+                <div>
                   <Webcam
                     audio={false}
                     height={350}
@@ -67,26 +69,28 @@ class App extends Component {
                     screenshotFormat="image/jpeg"
                     width={350}
                   />
-                  : null}
-
-                <div>
-                  <h2>Screenshots</h2>
-                  <div className='screenshots'>
-                    <div className='controls'>
+                  <h2>Say cheese</h2>
+                  <div className='controls'>
                       <button onClick={this.handleClick}>capture</button>
                     </div>
-                    {this.state.screenshot ? <img alt="taken-from-webcam" src={this.state.screenshot} /> : null}
+                  </div>
+                  : null}
+                <div>
+                  <div className='screenshots'>
+                    {this.state.screenshot ? 
+                    <div>
+                    <img id="screenshotTaken" alt="taken-from-webcam" src={this.state.screenshot} /> 
+                    <h1>SELECT JQUERY EFFECT</h1>
+                    <button id="jqueryEffect">Effect 1</button>
+                    <button>SUBMIT PHOTO WITH EFFECT BUTTON</button>
+                    </div>
+                    : null}
                   </div>
                 </div>
-              </div>
-              {/* <button>Click here to add an image.</button> */}
-              <img alt="testimage" src="http://lh3.googleusercontent.com/UVqRPPKM15p5ZhePIaKh2E9OY42FqLyCVlcH2NpBZflxMUZ4Pj7Q8q9eu14YIblEHrgCJKlolnKgnw" />
-              {/* <button>Select image</button> */}
-              <h1>SELECT JQUERY EFFECT</h1>
-              <button id="jqueryEffect">Effect 1 </button>
-              {/* <button>SUBMIT PHOTO WITH EFFECT BUTTON</button> */}
+              </div> 
             </div>
           </section>
+
           <section id="output">
             <h3>Output</h3>
             <iframe title="output" />
