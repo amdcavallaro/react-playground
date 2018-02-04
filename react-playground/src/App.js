@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       screenshot: null,
       tab: 0,
-      on: false
+      on: false,
+      image: false
     };
   }
 
@@ -26,6 +27,7 @@ class App extends Component {
   handleClick = () => {
     const screenshot = this.webcam.getScreenshot();
     this.setState({ screenshot });
+    this.setState({ image: !this.state.image });
   }
 
   showHTMLOutput() {
@@ -47,54 +49,69 @@ class App extends Component {
 
   render() {
 
+
     return (
       <div className="App" id="App">
-        <div className="wrap">
-          <img src={logo} className="App-logo" alt="logo" />
-          <section id="section_editors">
-            <div id="html" className="code_box">
-              <h3>Type HTML Code here</h3>
-              <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
+        <div className="container-fluid">
+          <div className="row">
+            <img src={logo} className="App-logo" alt="logo" />
+            <div className="row" >
+              <div className="col-sm-6" id="input">
+                <h3>Type HTML Code here</h3>
+                <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
+              </div>
+              <div className="col-sm-6">
+                <h3>Output</h3>
+                <div id="output"></div>
+                {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
+                : null}
+              </div>
             </div>
-            <div id="image" className="code_box">
-              <div>
-                <h3>Click here to show webcam</h3>
-                <button onClick={this.handleWebCam}>Show webcam</button>
-                {this.state.on ?
-                <div>
-                  <Webcam
-                    audio={false}
-                    height={350}
-                    ref={node => this.webcam = node}
-                    screenshotFormat="image/jpeg"
-                    width={350}
-                  />
-                  <h2>Say cheese</h2>
-                  <div className='controls'>
-                      <button onClick={this.handleClick}>capture</button>
-                    </div>
-                  </div>
-                  : null}
-                <div>
-                  <div className='screenshots'>
-                    {this.state.screenshot ? 
-                    <div>
-                    <img id="screenshotTaken" alt="taken-from-webcam" src={this.state.screenshot} /> 
-                    <h1>SELECT JQUERY EFFECT</h1>
-                    <button id="jqueryEffect">Effect 1</button>
-                    <button>SUBMIT PHOTO WITH EFFECT BUTTON</button>
-                    </div>
-                    : null}
+            <div className="row" >
+              <div className="col-sm-6">
+                <div id="image" className="code_box">
+                  <div>
+                    <h3>Click here to show webcam</h3>
+                    <button class="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
+                    {this.state.on ?
+                      <div className="row" >
+                        <Webcam
+                          audio={false}
+                          height={350}
+                          ref={node => this.webcam = node}
+                          screenshotFormat="image/jpeg"
+                          width={350}
+                        />
+                        <h2>Say cheese</h2>
+                        <div className='controls'>
+                          <button id="capture" className="btn btn-success" onClick={this.handleClick}>capture</button>
+                        </div>
+                      </div>
+                      : null}
                   </div>
                 </div>
-              </div> 
-            </div>
-          </section>
+              </div>
+              <div className="col-sm-6">
+                <div className='screenshots'>
+                  {this.state.screenshot ?
+                    <div>
+                      {/* <img id="screenshotTaken" alt="taken-from-webcam" src={this.state.screenshot} /> */}
+                      <h1>SELECT JQUERY EFFECT</h1>
+                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 1</button>
+                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 2</button>
+                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 3</button>
+                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 4</button>
+                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 5</button>
 
-          <section id="output">
-            <h3>Output</h3>
-            <iframe title="output" />
-          </section>
+                      <div id="submit">
+                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+                      </div>
+                    </div>
+                    : null}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
