@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-import $ from "jquery";
+// import $ from "jquery";
 import Webcam from 'react-webcam';
 
 class App extends Component {
@@ -14,7 +14,9 @@ class App extends Component {
       screenshot: null,
       tab: 0,
       on: false,
-      image: false
+      image: false,
+      showWebcam: "Show",
+      button: "btn btn-success"
     };
   }
 
@@ -24,7 +26,9 @@ class App extends Component {
 
   handleWebCam(e) {
     this.setState({
-      on: !this.state.on
+      on: !this.state.on,
+      showWebcam: "Hide",
+      button: "btn btn-danger"
     })
   }
 
@@ -38,27 +42,28 @@ class App extends Component {
     document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
-  componentDidUpdate() {
-    $(document).ready(function () {
-      $("#screenshotTaken1").animate({
-        left: '250px',
-        opacity: '0.5',
-        height: '150px',
-        width: '150px'
-      });
+  // componentDidUpdate() {
+  //   $(document).ready(function () {
 
-      $("#screenshotTaken2").animate({ left: '250px' })
+  //     $("#screenshotTaken1").animate({
+  //       left: '250px',
+  //       opacity: '0.5',
+  //       height: '150px',
+  //       width: '150px'
+  //     });
 
-    });
-  }
+  //     $("#screenshotTaken2").animate({ left: '250px' })
+
+  //   });
+  // }
 
   render() {
     return (
       <div className="App" id="App">
         <div className="container-fluid">
           <div className="row">
-          <div className="col-sm-12" id="logo">
-            <img src={logo} className="App-logo" alt="logo" />
+            <div className="col-sm-12" id="logo">
+              <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div className="col-sm-6" id="input">
               <h3>Type HTML Code here</h3>
@@ -68,24 +73,24 @@ class App extends Component {
 
             </div>
             <div className="col-sm-6" id="result">
-              <h3>Output</h3>
+              <h3>See your code rendered here</h3>
               <div id="output"></div>
               {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
                 : null}
             </div>
-            <div className="col-sm-6">
+            <div >
               <div id="image" className="code_box">
-                <div>
+                <div className="col-sm-12">
                   <h3>Click here to show webcam</h3>
-                  <button className="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
+                  <button className={this.state.button} onClick={this.handleWebCam}> {this.state.showWebcam} </button>
                   {this.state.on ?
                     <div >
                       <Webcam
                         audio={false}
-                        height={350}
+                        height={150}
                         ref={node => this.webcam = node}
                         screenshotFormat="image/jpeg"
-                        width={350}
+                        width={200}
                       />
                       <h2>Say cheese</h2>
                       <div className='controls'>
@@ -104,32 +109,20 @@ class App extends Component {
                       {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot} /> : null}
                       {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot} /> : null} */}
                     <div>
-                      <h2>CSS Filters and style prop</h2>
+                      <h2>Choose the filter by clicking image below</h2>
                       <div className='webcams'>
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{ backgroundColor: "red", transform: 'rotate(180deg)' }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ backgroundColor: "red", transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken4' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
                           : null}
-
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
-                          : null}
-
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
-                          : null}
-
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
-                          : null}
-
-                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
-                          : null}
-
 
                       </div>
                     </div>
