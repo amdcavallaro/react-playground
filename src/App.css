@@ -5,9 +5,11 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  margin: auto; 
 }
 
-#HTMLInserted {
+#HTMLInserted 
+{
   border: 3px dotted violet;
   width:800px;
   height:250px;

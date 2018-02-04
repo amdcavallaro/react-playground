@@ -57,65 +57,91 @@ class App extends Component {
       <div className="App" id="App">
         <div className="container-fluid">
           <div className="row">
+          <div className="col-sm-12" id="logo">
             <img src={logo} className="App-logo" alt="logo" />
-            <div className="row" >
-              <div className="col-sm-6" id="input">
-                <h3>Type HTML Code here</h3>
-                <div id="container">
-                  <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
-                </div>
-
-              </div>
-              <div className="col-sm-6" id="result">
-                <h3>Output</h3>
-                <div id="output"></div>
-                {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
-                  : null}
-              </div>
             </div>
-            <div className="row" >
-              <div className="col-sm-6">
-                <div id="image" className="code_box">
-                  <div>
-                    <h3>Click here to show webcam</h3>
-                    <button className="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
-                    {this.state.on ?
-                      <div className="row" >
-                        <Webcam
-                          audio={false}
-                          height={350}
-                          ref={node => this.webcam = node}
-                          screenshotFormat="image/jpeg"
-                          width={350}
-                        />
-                        <h2>Say cheese</h2>
-                        <div className='controls'>
-                          <button id="capture" className="btn btn-success" onClick={this.handleClick}>capture</button>
-                        </div>
-                      </div>
-                      : null}
-                  </div>
-                </div>
+            <div className="col-sm-6" id="input">
+              <h3>Type HTML Code here</h3>
+              <div id="container">
+                <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
               </div>
-              <div className="col-sm-6">
-                <div className='screenshots'>
-                  {this.state.screenshot ?
-                    <div>
-                      <h1>Select jQuery Effect</h1>
 
-
-                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot} /> : null}
-                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot} /> : null}
-
-
-                      <div id="submit">
-                        <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+            </div>
+            <div className="col-sm-6" id="result">
+              <h3>Output</h3>
+              <div id="output"></div>
+              {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
+                : null}
+            </div>
+            <div className="col-sm-6">
+              <div id="image" className="code_box">
+                <div>
+                  <h3>Click here to show webcam</h3>
+                  <button className="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
+                  {this.state.on ?
+                    <div >
+                      <Webcam
+                        audio={false}
+                        height={350}
+                        ref={node => this.webcam = node}
+                        screenshotFormat="image/jpeg"
+                        width={350}
+                      />
+                      <h2>Say cheese</h2>
+                      <div className='controls'>
+                        <button id="capture" className="btn btn-success" onClick={this.handleClick}>capture</button>
                       </div>
                     </div>
                     : null}
                 </div>
               </div>
             </div>
+            <div className="col-sm-6">
+              <div className='screenshots'>
+                {this.state.screenshot ?
+                  <div>
+                    {/* <h1>Select jQuery Effect</h1>
+                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot} /> : null}
+                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot} /> : null} */}
+                    <div>
+                      <h2>CSS Filters and style prop</h2>
+                      <div className='webcams'>
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ backgroundColor: "red", transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+                        {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                          : null}
+
+
+                      </div>
+                    </div>
+
+                    <div id="submit">
+                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+                    </div>
+                  </div>
+                  : null}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
