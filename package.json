@@ -1,6 +1,7 @@
 {
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://girlsandwomen.netlify.com/",
   "dependencies": {
     "jquery": "^3.3.1",
     "monaco-editor": "^0.10.1",
