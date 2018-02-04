@@ -7,6 +7,23 @@
   height: 80px;
 }
 
+#HTMLInserted {
+  border: 3px dotted violet;
+  width:800px;
+  height:250px;
+}
+
+#output {
+  border: 3px dotted violet;
+  width:800px;
+  height:250px;
+}
+
+/* #container {
+  width:800px;
+  height:600px;
+  border:1px solid grey;
+} */
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

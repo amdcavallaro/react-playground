@@ -18,6 +18,10 @@ class App extends Component {
     };
   }
 
+  onChange(newValue, e) {
+    console.log('onChange', newValue, e);
+  }
+
   handleWebCam(e) {
     this.setState({
       on: !this.state.on
@@ -36,20 +40,19 @@ class App extends Component {
 
   componentDidUpdate() {
     $(document).ready(function () {
-      $("#jqueryEffect").click(function () {
-        $("#screenshotTaken").animate({
+        $("#screenshotTaken1").animate({
           left: '250px',
           opacity: '0.5',
           height: '150px',
           width: '150px'
         });
+
+        $("#screenshotTaken2").animate({left: '250px'})
+      
       });
-    });
   }
 
   render() {
-
-
     return (
       <div className="App" id="App">
         <div className="container-fluid">
@@ -58,13 +61,16 @@ class App extends Component {
             <div className="row" >
               <div className="col-sm-6" id="input">
                 <h3>Type HTML Code here</h3>
+                <div id="container"> 
                 <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
+                </div>
+              
               </div>
-              <div className="col-sm-6">
+              <div className="col-sm-6" id="result">
                 <h3>Output</h3>
                 <div id="output"></div>
                 {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
-                : null}
+                  : null}
               </div>
             </div>
             <div className="row" >
@@ -72,7 +78,7 @@ class App extends Component {
                 <div id="image" className="code_box">
                   <div>
                     <h3>Click here to show webcam</h3>
-                    <button class="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
+                    <button className="btn btn-success" onClick={this.handleWebCam}>Show webcam</button>
                     {this.state.on ?
                       <div className="row" >
                         <Webcam
@@ -95,16 +101,15 @@ class App extends Component {
                 <div className='screenshots'>
                   {this.state.screenshot ?
                     <div>
-                      {/* <img id="screenshotTaken" alt="taken-from-webcam" src={this.state.screenshot} /> */}
-                      <h1>SELECT JQUERY EFFECT</h1>
-                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 1</button>
-                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 2</button>
-                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 3</button>
-                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 4</button>
-                      <button id="jqueryEffect" className="btn btn-success btn-lg">Effect 5</button>
+                      <h1>Select jQuery Effect</h1>
+                      
+
+                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot}/>:null}
+                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot}/>:null}
+       
 
                       <div id="submit">
-                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+                        <button className="btn btn-danger btn-lg">Submit amazing work!</button>
                       </div>
                     </div>
                     : null}
