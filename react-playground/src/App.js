@@ -40,16 +40,16 @@ class App extends Component {
 
   componentDidUpdate() {
     $(document).ready(function () {
-        $("#screenshotTaken1").animate({
-          left: '250px',
-          opacity: '0.5',
-          height: '150px',
-          width: '150px'
-        });
-
-        $("#screenshotTaken2").animate({left: '250px'})
-      
+      $("#screenshotTaken1").animate({
+        left: '250px',
+        opacity: '0.5',
+        height: '150px',
+        width: '150px'
       });
+
+      $("#screenshotTaken2").animate({ left: '250px' })
+
+    });
   }
 
   render() {
@@ -61,10 +61,10 @@ class App extends Component {
             <div className="row" >
               <div className="col-sm-6" id="input">
                 <h3>Type HTML Code here</h3>
-                <div id="container"> 
-                <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
+                <div id="container">
+                  <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
                 </div>
-              
+
               </div>
               <div className="col-sm-6" id="result">
                 <h3>Output</h3>
@@ -102,11 +102,11 @@ class App extends Component {
                   {this.state.screenshot ?
                     <div>
                       <h1>Select jQuery Effect</h1>
-                      
 
-                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot}/>:null}
-                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot}/>:null}
-       
+
+                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot} /> : null}
+                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot} /> : null}
+
 
                       <div id="submit">
                         <button className="btn btn-danger btn-lg">Submit amazing work!</button>
