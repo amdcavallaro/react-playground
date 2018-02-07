@@ -112,13 +112,16 @@ class App extends Component {
                       <h2>Choose the filter by clicking image below</h2>
                       <div className='webcams'>
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{ backgroundColor: "red", transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{ '-webkit-filter': 'contrast(4)',
+  filter: 'contrast(4)' }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{ '-webkit-filter': 'brightness(3)',
+  filter: 'brightness(3)' }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{ '-webkit-filter': 'blur(5px)',
+  filter: 'blur(5px)' }} src={this.state.screenshot} />
                           : null}
 
                         {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken4' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
