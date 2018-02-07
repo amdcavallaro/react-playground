@@ -10,13 +10,14 @@ class App extends Component {
     super(props);
     this.showHTMLOutput = this.showHTMLOutput.bind(this); this.showHTMLOutput = this.showHTMLOutput.bind(this);
     this.handleWebCam = this.handleWebCam.bind(this);
+
     this.state = {
       screenshot: null,
       tab: 0,
       on: false,
       image: false,
       showWebcam: "Show",
-      button: "btn btn-success"
+      button: "btn btn-success",
     };
   }
 
@@ -42,6 +43,10 @@ class App extends Component {
     document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
+  componentDidMount() {
+    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
+  }
+
   // componentDidUpdate() {
   //   $(document).ready(function () {
 
@@ -58,6 +63,7 @@ class App extends Component {
   // }
 
   render() {
+    let textareaValue = "<h1 style='color:red;'>Hi, my name is Amanda.</h1>\n<h2 style='color:blue;'>I am practicing my coding skills.</h2>\n<h3 style='color:green;'>I am looking awesome in the photo below.</h3>";
     return (
       <div className="App" id="App">
         <div className="container-fluid">
@@ -68,16 +74,19 @@ class App extends Component {
             <div className="col-sm-6" id="input">
               <h3>Type HTML Code here</h3>
               <div id="container">
-                <textarea id="HTMLInserted" onChange={this.showHTMLOutput} />
+                <textarea id="HTMLInserted" defaultValue={textareaValue} onChange={this.showHTMLOutput} />
               </div>
-
             </div>
             <div className="col-sm-6" id="result">
               <h3>See your code rendered here</h3>
               <div id="output"></div>
               {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
                 : null}
+                 <div id="submit">
+                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
             </div>
+            </div>
+           
             <div >
               <div id="image" className="code_box">
                 <div className="col-sm-12">
@@ -105,23 +114,26 @@ class App extends Component {
               <div className='screenshots'>
                 {this.state.screenshot ?
                   <div>
-                    {/* <h1>Select jQuery Effect</h1>
-                      {this.state.image ? <img id='screenshotTaken1' alt='taken-from-webcam' src={this.state.screenshot} /> : null}
-                      {this.state.image ? <img id='screenshotTaken2' alt='taken-from-webcam=2' src={this.state.screenshot} /> : null} */}
                     <div>
-                      <h2>Choose the filter by clicking image below</h2>
+                      <h2>Click to Choose the filter below</h2>
                       <div className='webcams'>
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{ '-webkit-filter': 'contrast(4)',
-  filter: 'contrast(4)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{
+                          '-webkit-filter': 'contrast(4)',
+                          filter: 'contrast(4)'
+                        }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{ '-webkit-filter': 'brightness(3)',
-  filter: 'brightness(3)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{
+                          '-webkit-filter': 'brightness(3)',
+                          filter: 'brightness(3)'
+                        }} src={this.state.screenshot} />
                           : null}
 
-                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{ '-webkit-filter': 'blur(5px)',
-  filter: 'blur(5px)' }} src={this.state.screenshot} />
+                        {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{
+                          '-webkit-filter': 'blur(5px)',
+                          filter: 'blur(5px)'
+                        }} src={this.state.screenshot} />
                           : null}
 
                         {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken4' alt='taken-from-webcam' style={{ transform: 'rotate(180deg)' }} src={this.state.screenshot} />
@@ -130,9 +142,6 @@ class App extends Component {
                       </div>
                     </div>
 
-                    <div id="submit">
-                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
-                    </div>
                   </div>
                   : null}
               </div>
