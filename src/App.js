@@ -37,9 +37,11 @@ class App extends Component {
     const screenshot = this.webcam.getScreenshot();
     this.setState({ screenshot });
     this.setState({ image: !this.state.image });
+    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
   showHTMLOutput() {
+    // let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : null;
     document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
@@ -47,23 +49,16 @@ class App extends Component {
     document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
-  // componentDidUpdate() {
-  //   $(document).ready(function () {
+  componentDidUpdate() {
+   let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
+  //  document.getElementById('output').innerHTML = {screenshotImg};
+  }
 
-  //     $("#screenshotTaken1").animate({
-  //       left: '250px',
-  //       opacity: '0.5',
-  //       height: '150px',
-  //       width: '150px'
-  //     });
-
-  //     $("#screenshotTaken2").animate({ left: '250px' })
-
-  //   });
-  // }
 
   render() {
-    let textareaValue = "<h1 style='color:red;'>Hi, my name is Amanda.</h1>\n<h2 style='color:blue;'>I am practicing my coding skills.</h2>\n<h3 style='color:green;'>I am looking awesome in the photo below.</h3>";
+    let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
+
+    let textareaValue = "<h1 style='color:red;'> Hi, my name is Amanda. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> I am looking awesome in the photo below. </h3>";
     return (
       <div className="App" id="App">
         <div className="container-fluid">
@@ -80,8 +75,7 @@ class App extends Component {
             <div className="col-sm-6" id="result">
               <h3>See your code rendered here</h3>
               <div id="output"></div>
-              {this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} />
-                : null}
+              {screenshotImg}
                  <div id="submit">
                       <button className="btn btn-danger btn-lg">Submit amazing work!</button>
             </div>
@@ -119,19 +113,19 @@ class App extends Component {
                       <div className='webcams'>
 
                         {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken1' alt='taken-from-webcam' style={{
-                          '-webkit-filter': 'contrast(4)',
+                          'WebkitFilter': 'contrast(4)',
                           filter: 'contrast(4)'
                         }} src={this.state.screenshot} />
                           : null}
 
                         {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken2' alt='taken-from-webcam' style={{
-                          '-webkit-filter': 'brightness(3)',
+                          'WebkitFilter': 'brightness(3)',
                           filter: 'brightness(3)'
                         }} src={this.state.screenshot} />
                           : null}
 
                         {this.state.image ? <img height="150" width="200" id='CSSFilterscreenshotTaken3' alt='taken-from-webcam' style={{
-                          '-webkit-filter': 'blur(5px)',
+                          'WebkitFilter': 'blur(5px)',
                           filter: 'blur(5px)'
                         }} src={this.state.screenshot} />
                           : null}
