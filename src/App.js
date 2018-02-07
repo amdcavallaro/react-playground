@@ -50,8 +50,8 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-   let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
-  //  document.getElementById('output').innerHTML = {screenshotImg};
+    let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
+    //  document.getElementById('output').innerHTML = {screenshotImg};
   }
 
 
@@ -72,15 +72,17 @@ class App extends Component {
                 <textarea id="HTMLInserted" defaultValue={textareaValue} onChange={this.showHTMLOutput} />
               </div>
             </div>
-            <div className="col-sm-6" id="result">
+            <div className="col-sm-6" >
               <h3>See your code rendered here</h3>
-              <div id="output"></div>
-              {screenshotImg}
-                 <div id="submit">
-                      <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+              <div id="result">
+                <div id="output"></div>
+                {screenshotImg}
+                <div id="submit">
+                  <button className="btn btn-danger btn-lg">Submit amazing work!</button>
+                </div>
+              </div>
             </div>
-            </div>
-           
+
             <div >
               <div id="image" className="code_box">
                 <div className="col-sm-12">
