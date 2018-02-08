@@ -16,8 +16,7 @@ class App extends Component {
       tab: 0,
       on: false,
       image: false,
-      showWebcam: "Show",
-      button: "btn btn-success",
+      showWebcam: true
     };
   }
 
@@ -28,8 +27,7 @@ class App extends Component {
   handleWebCam(e) {
     this.setState({
       on: !this.state.on,
-      showWebcam: "Hide",
-      button: "btn btn-danger"
+      showWebcam: !this.state.showWebcam
     })
   }
 
@@ -50,7 +48,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
+    // let screenshotImg = this.state.image ? <img id='screenshotTaken' alt='taken-from-webcam' src={this.state.screenshot} /> : "";
     //  document.getElementById('output').innerHTML = {screenshotImg};
   }
 
@@ -67,7 +65,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div className="col-sm-6" id="input">
-              <h3>Type HTML Code here</h3>
+              <h3>Type HTML code here</h3>
               <div id="container">
                 <textarea id="HTMLInserted" defaultValue={textareaValue} onChange={this.showHTMLOutput} />
               </div>
@@ -77,17 +75,25 @@ class App extends Component {
               <div id="result">
                 <div id="output"></div>
                 {screenshotImg}
+              </div>
                 <div id="submit">
                   <button className="btn btn-danger btn-lg">Submit amazing work!</button>
                 </div>
-              </div>
             </div>
 
             <div >
               <div id="image" className="code_box">
                 <div className="col-sm-12">
                   <h3>Click here to show webcam</h3>
-                  <button className={this.state.button} onClick={this.handleWebCam}> {this.state.showWebcam} </button>
+                  <button type="button" className={this.state.showWebcam ? "btn btn-danger" : "btn btn-success"} onClick={this.handleWebCam}> 
+                  {
+                    this.state.showWebcam ? (
+                        <span > Show Webcam</span>
+                    ) : 
+                        <span > Hide Webcam</span>
+                        
+                }
+                 </button>
                   {this.state.on ?
                     <div >
                       <Webcam
