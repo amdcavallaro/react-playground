@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-import ReactGA from 'react-ga';
 
 
 class App extends Component {
@@ -52,21 +51,18 @@ class App extends Component {
 
   handleCat = () => {
     this.setState({ screenshot: this.catImage });
-    this.setState({ image: !this.state.image });
     this.setState({ animal: this.imageCat });
   }
   
 
   handleDog = () => {
     this.setState({ screenshot: this.dogImage });
-    this.setState({ image: !this.state.image });
     this.setState({ animal: this.imageDog });
   }
 
   handleHamster = () => {
     this.setState({ screenshot: this.hamsterImage });
-    this.setState({ image: !this.state.image });
-    this.setState({ animal: this.imageHamster});
+    this.setState({ animal: this.imageHamster });
   }
 
   showHTMLOutput() {
@@ -91,7 +87,7 @@ class App extends Component {
 
     const numbers = [0, 1, 2, 3];
     const listItems = numbers.map((number) =>
-      <span key={number.toString()}>{this.state.image ?
+      <span key={number.toString()}>{this.state.screenshot ?
         <img height="150" onClick={() => this.handleStyle(number)} width="200" id='CSSFilterscreenshotTaken1' alt='animal' style={{ filter: this.filter[number], WebkitFilter: this.filter[number] }} src={this.state.screenshot} />
         : null}
       </span>
@@ -130,8 +126,6 @@ class App extends Component {
               </div>
             </div>
             <div className="col-sm-6">
-              <div className='screenshots'>
-                {this.state.screenshot ?
                   <div>
                     {listItems}
                     <div style={{ fontSize: '26px' }}>
@@ -139,10 +133,7 @@ class App extends Component {
                       {"\n"} and paste it inside the img tag
                     </div>
                   </div>
-                  : null}
-              </div>
             </div>
-
           </div>
         </div>
       </div>
