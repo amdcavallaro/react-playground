@@ -16,12 +16,15 @@ class App extends Component {
     this.imageHamster = `<img alt="dog" height='150' width='200' src=${this.hamsterImage} />`;
 
     this.filter = ['contrast(4)', 'brightness(3)', 'blur(5px)', 'sepia(50%)'];
-    
-    this.showHTMLOutput = this.showHTMLOutput.bind(this);
+
     this.handleWebCam = this.handleWebCam.bind(this);
     this.handleCat = this.handleCat.bind(this);
     this.handleDog = this.handleDog.bind(this);
+    this.handleHamster = this.handleHamster.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
+    this.handleTextareaChange = this.handleTextareaChange.bind(this);
+
+    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> Cute pet below: </h3>\n"
 
     this.state = {
       screenshot: null,
@@ -29,13 +32,10 @@ class App extends Component {
       image: false,
       showWebcam: true,
       animal: this.noAnimal,
-      style: "none"
+      style: "none",
+      textareacontent: defaultTextareaContent,
     };
   }
-
-  // onChange(newValue, e) {
-  //   console.log('onChange', newValue, e);
-  // }
 
   handleWebCam(e) {
     this.setState({
@@ -44,29 +44,27 @@ class App extends Component {
     })
   }
 
-  handleClick = () => {
+  handleClick() {
     this.setState({ image: !this.state.image });
-    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
-  handleCat = () => {
+  handleTextareaChange(event) {
+    this.setState({textareacontent: event.target.value});
+  }
+
+  handleCat() {
     this.setState({ screenshot: this.catImage });
     this.setState({ animal: this.imageCat });
   }
-  
 
-  handleDog = () => {
+  handleDog() {
     this.setState({ screenshot: this.dogImage });
     this.setState({ animal: this.imageDog });
   }
 
-  handleHamster = () => {
+  handleHamster() {
     this.setState({ screenshot: this.hamsterImage });
     this.setState({ animal: this.imageHamster });
-  }
-
-  showHTMLOutput() {
-    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
   }
 
   handleStyle(number) {
@@ -75,16 +73,7 @@ class App extends Component {
     this.setState({ style: this.filter[number] });
   }
 
-  componentDidMount() {
-    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
-  }
-
-  componentDidUpdate() {
-    document.getElementById('output').innerHTML = document.getElementById('HTMLInserted').value;
-  }
-
   render() {
-
     const numbers = [0, 1, 2, 3];
     const listItems = numbers.map((number) =>
       <span key={number.toString()}>{this.state.screenshot ?
@@ -92,7 +81,6 @@ class App extends Component {
         : null}
       </span>
     );
-    let textareaValue = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> Cute pet below: </h3>\n" + this.state.animal;
 
     return (
       <div className="App" id="App">
@@ -104,13 +92,13 @@ class App extends Component {
             <div className="col-sm-6" id="input">
               <h3>Type HTML code here</h3>
               <div >
-                <textarea id="HTMLInserted"  ref="text" defaultValue={textareaValue} onChange={this.showHTMLOutput} />
+                <textarea id="HTMLInserted"  ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
               </div>
             </div>
             <div className="col-sm-6" >
               <h3>See your code rendered here</h3>
               <div id="result">
-                <div id="output"></div>
+                <div id="output" dangerouslySetInnerHTML={{__html: this.state.textareacontent }}></div>
               </div>
               {/* <div id="submit">
                 save it somewhere
