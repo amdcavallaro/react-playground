@@ -1,6 +1,10 @@
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-113868571-1'); //Unique Google Analytics tracking number
+ReactGA.pageview(window.location.pathname);
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
+
 
 class App extends Component {
 
