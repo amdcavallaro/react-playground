@@ -1,24 +1,27 @@
 .App {
   text-align: center;
+  color: indianred;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 100px;
   margin: auto; 
 }
 
 #HTMLInserted 
 {
-  border: 3px dotted violet;
+  border: 10px dotted lightcoral;
   width:800px;
   height:500px;
+  background: lightgrey;
 }
 
 #result {
-  border: 3px dotted violet;
+  border: 10px dotted  lightcoral;
   width:800px;
   height:500px;
+  background: lightgrey;
 }
 
 /* #container {
