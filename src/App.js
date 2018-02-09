@@ -8,10 +8,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
-    ReactGA.initialize('UA-113868571-1'); //Unique Google Analytics tracking number
-    ReactGA.pageview(window.location.pathname);
-    
     this.catImage = "https://static.pexels.com/photos/20787/pexels-photo.jpg";
     this.imageCat = `<img alt="cat" height='150' width='200' src=${this.catImage} />`;
     this.dogImage = "https://i.pinimg.com/originals/ec/3a/aa/ec3aaaa969157aa5fff993c5f76abee4.jpg";
