@@ -11,7 +11,7 @@ class App extends Component {
     this.imageCat = `<img alt="cat" height='150' width='200' src=${this.catImage} />`;
     this.dogImage = "https://i.pinimg.com/originals/ec/3a/aa/ec3aaaa969157aa5fff993c5f76abee4.jpg";
     this.imageDog = `<img alt="dog" height='150' width='200' src=${this.dogImage} />`
-    this.noAnimal = `<img height='150' width='200' />`
+    this.noAnimal = `<img height='150' width='200'  />`
     this.hamsterImage = "https://www.unilad.co.uk/wp-content/uploads/2017/07/hamster-hehe.jpg";
     this.imageHamster = `<img alt="dog" height='150' width='200' src=${this.hamsterImage} />`;
 
@@ -132,10 +132,10 @@ class App extends Component {
               <div className='screenshots'>
                 {this.state.screenshot ?
                   <div>
-                    <h3>Click to see the css style of filter below</h3>
                     {listItems}
                     <div style={{ fontSize: '26px' }}>
-                      Copy style below: <span style={{ fontFamily: 'COURIER' }} >style="{this.state.style}" </span>
+                      Copy style above: <span style={{ fontFamily: 'COURIER' }} >style="filter:{this.state.style}"</span>
+                      {"\n"} and paste it inside the img tag
                     </div>
                   </div>
                   : null}
