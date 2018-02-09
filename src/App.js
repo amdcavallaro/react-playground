@@ -24,7 +24,7 @@ class App extends Component {
     this.handleStyle = this.handleStyle.bind(this);
     this.handleTextareaChange = this.handleTextareaChange.bind(this);
 
-    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> Cute pet below: </h3>\n"
+    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> Cute pet below: </h3>\n" + this.noAnimal;
 
     this.state = {
       screenshot: null,
@@ -52,19 +52,26 @@ class App extends Component {
     this.setState({textareacontent: event.target.value});
   }
 
+  replaceImage(newImage) {
+    this.setState({ textareacontent: this.state.textareacontent + "\n" + newImage });
+  }
+
   handleCat() {
     this.setState({ screenshot: this.catImage });
     this.setState({ animal: this.imageCat });
+    this.replaceImage(this.imageCat);
   }
 
   handleDog() {
     this.setState({ screenshot: this.dogImage });
     this.setState({ animal: this.imageDog });
+    this.replaceImage(this.imageDog);
   }
 
   handleHamster() {
     this.setState({ screenshot: this.hamsterImage });
     this.setState({ animal: this.imageHamster });
+    this.replaceImage(this.imageHamster);
   }
 
   handleStyle(number) {
