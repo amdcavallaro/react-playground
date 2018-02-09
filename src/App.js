@@ -53,24 +53,24 @@ class App extends Component {
   }
 
   replaceImage(newImage) {
-    this.setState({ textareacontent: this.state.textareacontent + "\n" + newImage });
+    let oldImage = this.state.animal;
+    let newTextareacontent = this.state.textareacontent.replace(oldImage, "") + newImage;
+    this.setState({ animal: newImage });
+    this.setState({ textareacontent: newTextareacontent });
   }
 
   handleCat() {
     this.setState({ screenshot: this.catImage });
-    this.setState({ animal: this.imageCat });
     this.replaceImage(this.imageCat);
   }
 
   handleDog() {
     this.setState({ screenshot: this.dogImage });
-    this.setState({ animal: this.imageDog });
     this.replaceImage(this.imageDog);
   }
 
   handleHamster() {
     this.setState({ screenshot: this.hamsterImage });
-    this.setState({ animal: this.imageHamster });
     this.replaceImage(this.imageHamster);
   }
 
