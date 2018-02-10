@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-
-
+import InputComponent from './inputComponent';
+import ResultComponent from './resultComponent';
+import ImageComponent from './imageComponent';
+import FilterComponent from './filterComponent';
 class App extends Component {
 
   constructor(props) {
@@ -15,6 +17,7 @@ class App extends Component {
     this.hamsterImage = "https://www.unilad.co.uk/wp-content/uploads/2017/07/hamster-hehe.jpg";
     this.imageHamster = `<img alt="hamster" height='150' width='200' src=${this.hamsterImage} />`;
 
+
     this.filter = ['contrast(4)', 'brightness(3)', 'blur(5px)', 'sepia(50%)'];
 
     this.handleCat = this.handleCat.bind(this);
@@ -22,19 +25,17 @@ class App extends Component {
     this.handleHamster = this.handleHamster.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
     this.handleTextareaChange = this.handleTextareaChange.bind(this);
-
     let defaultTextareaContent = `
     <h1 style='color:red;'> Hi, my name is [replace with your name].
     <h2 style='color:blue;'> I am practicing my coding skills.</h2>
     <h3 style='color:green;'> Cute pet below: </h3>
     ${this.noAnimal}`;
-
     this.state = {
       screenshot: null,
       image: false,
       animal: this.noAnimal,
-      style: `none`,
       textareacontent: defaultTextareaContent,
+      style: `none`
     };
   }
 
@@ -75,14 +76,6 @@ class App extends Component {
   }
 
   render() {
-    const numbers = [0, 1, 2, 3];
-    const listItems = numbers.map((number) =>
-      <span key={number.toString()}>{this.state.screenshot ?
-        <img height="150" onClick={() => this.handleStyle(number)} width="200" id='CSSFilterscreenshotTaken1' alt='animal' style={{ filter: this.filter[number], WebkitFilter: this.filter[number] }} src={this.state.screenshot} />
-        : null}
-      </span>
-    );
-
     return (
       <div className="App" id="App">
         <div className="container-fluid">
@@ -90,40 +83,26 @@ class App extends Component {
             <div className="col-sm-12" id="logo">
               <img src={logo} className="App-logo" alt="logo" />
             </div>
-            <div className="col-sm-6" id="input">
-              <h3>Type HTML code here</h3>
-              <div >
-                <textarea id="HTMLInserted" style={{ fontFamily: 'courier', fontSize: '21px' }} ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
-              </div>
-            </div>
-            <div className="col-sm-6" >
-              <h3>See your code rendered here</h3>
-              <div id="result">
-                <div id="output" dangerouslySetInnerHTML={{ __html: this.state.textareacontent }}></div>
-              </div>
-              {/* <div id="submit">
-                save it somewhere
-                <button className="btn btn-danger btn-lg">Submit amazing work!</button> */}
-              {/* </div> */}
-            </div>
-            <div className="col-md-6" id="image">
-              <h3>Click here to show image filters</h3>
-              <div>
-                <img alt="cat" onClick={this.handleCat} height='150' width='200' src={this.catImage} />
-                <img alt="dog" onClick={this.handleDog} height='150' width='200' src={this.dogImage} />
-                <img alt="dog" onClick={this.handleHamster} height='150' width='200' src={this.hamsterImage} />
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div>
-                <div id="copyStyleDiv">
-                  Copy style below:
-                  <span id="copyStyle">style="filter:{this.state.style}"</span>
-                  and paste it inside the img tag.
-                    </div>
-                {listItems}
-              </div>
-            </div>
+            <InputComponent
+              textareacontent={this.state.textareacontent}
+              handleTextareaChange={this.handleTextareaChange} />
+            <ResultComponent textareacontent={this.state.textareacontent} />
+            <ImageComponent
+              catImage={this.catImage}
+              imageCat={this.imageCat}
+              dogImage={this.dogImage}
+              imageDog={this.imageDog}
+              noAnimal={this.noAnimal}
+              hamsterImage={this.hamsterImage}
+              imageHamster={this.imageHamster}
+              handleCat={this.handleCat}
+              handleDog={this.handleDog}
+              handleHamster={this.handleHamster}
+            />
+            <FilterComponent 
+            screenshot={this.state.screenshot}
+            style={this.state.style}
+            handleStyle={this.handleStyle} />
           </div>
         </div>
       </div>

@@ -15,6 +15,8 @@
   width:800px;
   height:500px;
   background: lightgrey;
+  font-family: 'courier';
+  font-size: '21px';
 }
 
 #result {
@@ -32,12 +34,6 @@
 #copyStyleDiv {
   font-size: 26px;
 }
-
-/* #container {
-  width:800px;
-  height:600px;
-  border:1px solid grey;
-} */
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
