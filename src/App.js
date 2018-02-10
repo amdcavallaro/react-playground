@@ -13,7 +13,7 @@ class App extends Component {
     this.imageDog = `<img alt="dog" height='150' width='200' src=${this.dogImage} />`
     this.noAnimal = `<img height='150' width='200'  />`
     this.hamsterImage = "https://www.unilad.co.uk/wp-content/uploads/2017/07/hamster-hehe.jpg";
-    this.imageHamster = `<img alt="dog" height='150' width='200' src=${this.hamsterImage} />`;
+    this.imageHamster = `<img alt="hamster" height='150' width='200' src=${this.hamsterImage} />`;
 
     this.filter = ['contrast(4)', 'brightness(3)', 'blur(5px)', 'sepia(50%)'];
 
@@ -24,7 +24,7 @@ class App extends Component {
     this.handleStyle = this.handleStyle.bind(this);
     this.handleTextareaChange = this.handleTextareaChange.bind(this);
 
-    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n<h3 style='color:green;'> Cute pet below: </h3>\n" + this.noAnimal;
+    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n\n<h3 style='color:green;'> Cute pet below: </h3>\n\n" + this.noAnimal;
 
     this.state = {
       screenshot: null,
@@ -99,7 +99,7 @@ class App extends Component {
             <div className="col-sm-6" id="input">
               <h3>Type HTML code here</h3>
               <div >
-                <textarea id="HTMLInserted"  ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
+                <textarea id="HTMLInserted" style={{ fontFamily:'courier', fontSize: '21px' }} ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
               </div>
             </div>
             <div className="col-sm-6" >
@@ -124,7 +124,7 @@ class App extends Component {
                   <div>
                     {listItems}
                     <div style={{ fontSize: '26px' }}>
-                      Copy style above: <span style={{ fontFamily: 'COURIER' }} >style="filter:{this.state.style}"</span>
+                      Copy style above: <span style={{ backgroundColor:'yellow', fontFamily: 'COURIER' }} >style="filter:{this.state.style}"</span>
                       {"\n"} and paste it inside the img tag
                     </div>
                   </div>
