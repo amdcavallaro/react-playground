@@ -24,6 +24,15 @@
   background: lightgrey;
 }
 
+#copyStyle {
+  background-color: yellow;
+  font-family: 'courier';
+}
+
+#copyStyleDiv {
+  font-size: 26px;
+}
+
 /* #container {
   width:800px;
   height:600px;

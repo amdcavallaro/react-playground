@@ -17,31 +17,25 @@ class App extends Component {
 
     this.filter = ['contrast(4)', 'brightness(3)', 'blur(5px)', 'sepia(50%)'];
 
-    this.handleWebCam = this.handleWebCam.bind(this);
     this.handleCat = this.handleCat.bind(this);
     this.handleDog = this.handleDog.bind(this);
     this.handleHamster = this.handleHamster.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
     this.handleTextareaChange = this.handleTextareaChange.bind(this);
 
-    let defaultTextareaContent = "<h1 style='color:red;'> Hi, my name is [replace with your name]. </h1>\n\n<h2 style='color:blue;'> I am practicing my coding skills. </h2>\n\n<h3 style='color:green;'> Cute pet below: </h3>\n\n" + this.noAnimal;
+    let defaultTextareaContent = `
+    <h1 style='color:red;'> Hi, my name is [replace with your name].
+    <h2 style='color:blue;'> I am practicing my coding skills.</h2>
+    <h3 style='color:green;'> Cute pet below: </h3>
+    ${this.noAnimal}`;
 
     this.state = {
       screenshot: null,
-      on: false,
       image: false,
-      showWebcam: true,
       animal: this.noAnimal,
-      style: "none",
+      style: `none`,
       textareacontent: defaultTextareaContent,
     };
-  }
-
-  handleWebCam(e) {
-    this.setState({
-      on: !this.state.on,
-      showWebcam: !this.state.showWebcam
-    })
   }
 
   handleClick() {
@@ -49,7 +43,7 @@ class App extends Component {
   }
 
   handleTextareaChange(event) {
-    this.setState({textareacontent: event.target.value});
+    this.setState({ textareacontent: event.target.value });
   }
 
   replaceImage(newImage) {
@@ -99,13 +93,13 @@ class App extends Component {
             <div className="col-sm-6" id="input">
               <h3>Type HTML code here</h3>
               <div >
-                <textarea id="HTMLInserted" style={{ fontFamily:'courier', fontSize: '21px' }} ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
+                <textarea id="HTMLInserted" style={{ fontFamily: 'courier', fontSize: '21px' }} ref="text" value={this.state.textareacontent} onChange={this.handleTextareaChange} />
               </div>
             </div>
             <div className="col-sm-6" >
               <h3>See your code rendered here</h3>
               <div id="result">
-                <div id="output" dangerouslySetInnerHTML={{__html: this.state.textareacontent }}></div>
+                <div id="output" dangerouslySetInnerHTML={{ __html: this.state.textareacontent }}></div>
               </div>
               {/* <div id="submit">
                 save it somewhere
@@ -121,13 +115,14 @@ class App extends Component {
               </div>
             </div>
             <div className="col-sm-6">
-                  <div>
-                    {listItems}
-                    <div style={{ fontSize: '26px' }}>
-                      Copy style above: <span style={{ backgroundColor:'yellow', fontFamily: 'COURIER' }} >style="filter:{this.state.style}"</span>
-                      {"\n"} and paste it inside the img tag
+              <div>
+                <div id="copyStyleDiv">
+                  Copy style below:
+                  <span id="copyStyle">style="filter:{this.state.style}"</span>
+                  and paste it inside the img tag.
                     </div>
-                  </div>
+                {listItems}
+              </div>
             </div>
           </div>
         </div>
