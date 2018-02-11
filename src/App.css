@@ -16,7 +16,7 @@
   height:500px;
   background: lightgrey;
   font-family: 'courier';
-  font-size: '21px';
+  font-size: 22px;
 }
 
 #result {
@@ -32,7 +32,7 @@
 }
 
 #copyStyleDiv {
-  font-size: 26px;
+  font-size: 24px;
 }
 
 @keyframes App-logo-spin {
