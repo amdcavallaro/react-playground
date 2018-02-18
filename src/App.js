@@ -10,12 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.catImage = "https://static.pexels.com/photos/20787/pexels-photo.jpg";
-    this.imageCat = `<img alt="cat" height='150' width='200' src='${this.catImage}' />`;
+    this.imageCat = `<img alt="cat" height='50' width='70' src='${this.catImage}' />`;
     this.dogImage = "https://i.pinimg.com/originals/ec/3a/aa/ec3aaaa969157aa5fff993c5f76abee4.jpg";
-    this.imageDog = `<img alt="dog" height='150' width='200' src='${this.dogImage}' />`
-    this.noAnimal = `<img height='150' width='200'  />`
+    this.imageDog = `<img alt="dog" height='50' width='70' src='${this.dogImage}' />`
+    this.noAnimal = `<img height='50' width='70'  />`
     this.hamsterImage = "https://www.unilad.co.uk/wp-content/uploads/2017/07/hamster-hehe.jpg";
-    this.imageHamster = `<img alt="hamster" height='150' width='200' src='${this.hamsterImage}' />`;
+    this.imageHamster = `<img alt="hamster" height='50' width='70' src='${this.hamsterImage}' />`;
 
 
     this.filter = ['contrast(4)', 'brightness(3)', 'blur(5px)', 'sepia(50%)'];

@@ -11,19 +11,23 @@
 
 #HTMLInserted 
 {
-  border: 10px dotted lightcoral;
-  width:800px;
-  height:500px;
+  border: 8px dotted lightcoral;
+  /* width:800px; */
+  width:100%;
+  height:300px;
   background: lightgrey;
   font-family: 'courier';
-  font-size: 22px;
+  font-size: 18px;
+  max-width: 100%;
 }
 
 #result {
-  border: 10px dotted  lightcoral;
-  width:800px;
-  height:500px;
+  border: 8px dotted  lightcoral;
+  /* width:800px; */
+  width: 100%;
+  height:300px;
   background: lightgrey;
+  max-width: 100%;
 }
 
 #copyStyle {
@@ -32,7 +36,7 @@
 }
 
 #copyStyleDiv {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 @keyframes App-logo-spin {
